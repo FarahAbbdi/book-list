@@ -1,4 +1,10 @@
 const bookContainer= document.querySelector('.book-list');
+const showDialogBtn = document.getElementById("open-dialog-btn");
+const dialog = document.getElementById('dialog');
+
+const myLibrary = [
+    new Book("Harry Potter", "JK Rowling", 400, true),
+];
 
 // Function Constructor for Books
 function Book(title, author, noOfPage, read) {
@@ -7,10 +13,6 @@ function Book(title, author, noOfPage, read) {
     this.noOfPage = noOfPage;
     this.read = read;
 }
-
-const myLibrary = [
-    new Book("Harry Potter", "JK Rowling", 400, true),
-];
 
 // Function to Add Books to the book container
 function addBookToLibrary (books) {
@@ -26,7 +28,17 @@ function addBookToLibrary (books) {
     });
 }
 
+// Open Dialog
+if (showDialogBtn) {
+    showDialogBtn.addEventListener("click", () => {
+        dialog.showModal();
+    });
+}
+
+// Add books to the library
 addBookToLibrary(myLibrary);
+
+
 
 
 

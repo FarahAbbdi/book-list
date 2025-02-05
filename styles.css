@@ -2,7 +2,6 @@
     --primary-color: #DDDDDD;
     font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
     font-weight: normal;
-    background-color: var(--primary-color);
 }
 
 * {
@@ -12,11 +11,29 @@
 }                                                                                                            
 
 .header {
+    background-color: var(--primary-color);
     display: flex;
     gap: 20px;
     font-size: 25px;
 }
 
+.library {
+    position: relative;
+}
+
 .book-item {
     background-color: aqua;
+}
+
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
