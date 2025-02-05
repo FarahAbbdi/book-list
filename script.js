@@ -1,11 +1,11 @@
 const bookContainer= document.querySelector('.book-list');
 const showDialogBtn = document.getElementById('open-dialog-btn');
 const dialog = document.getElementById('add-book-dialog');
-const addBtn = document.getElementById('add-book-btn');
+const addBookBtn = document.getElementById('add-book-btn');
 const closeBtn = document.getElementById('close-dialog-btn');
 
 const myLibrary = [
-    new Book("Harry Potter", "JK Rowling", 400, true),
+    new Book("Dune", "Frank Herbet", 412, true),
 ];
 
 // Function Constructor for Books
@@ -18,12 +18,19 @@ function Book(title, author, numberOfPage, isRead) {
 
 // Function to display books to the book container
 function displayBooks(books) {
+    bookContainer.innerHTML = '';
+
     books.forEach(book => {
         let bookItem = document.createElement("div");
         bookItem.classList.add("book-item");
 
         bookItem.setAttribute("data-item", book.title);
-        bookItem.innerHTML = `<h3>${book.title}</h3><p>By ${book.author}</p><p>${book.numberOfPage} pages</p>`; // Fix later 
+        bookItem.innerHTML = `
+            <h3>${book.title}</h3>
+            <p>By ${book.author}</p>
+            <p>${book.numberOfPage} pages</p>
+            <p>${book.isRead ? "Status: Read" : "Status: Not Read"}</p>
+        `;
 
         bookContainer.appendChild(bookItem);
     });
@@ -43,11 +50,44 @@ if (closeBtn) {
     });
 }
 
-// Add books to the library
+// Function to add book to Library 
+if (addBookBtn) { 
+    addBookBtn.addEventListener('click', () => {
+        const title = document.getElementById('title').value.trim();
+        const author = document.getElementById('author').value.trim();
+        const numberOfPages = document.getElementById('no-pages').value.trim();
+        const isRead = document.getElementById('read').checked;
+
+        const pages = parseInt(numberOfPages, 10);
+        
+        // Check if required fields are filled
+        if (!title || !author || !numberOfPages) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Check if the book already exists in the library
+        const bookExist = myLibrary.some(book => book.title === title && book.author === author);
+        
+        if (bookExist) {
+            alert("This book is already in your library");
+            return;
+        }
+        
+        book = new Book(title, author, pages, isRead);
+        
+        // Add the book into the Library Array
+        myLibrary.push(book);
+
+        // Display the updated books
+        displayBooks(myLibrary);
+
+        dialog.close();
+
+        // Clear the form fields
+        document.getElementById('book-form').reset();
+    });    
+}
+
+// Initial display of the books
 displayBooks(myLibrary);
-
-
-
-
-
-
