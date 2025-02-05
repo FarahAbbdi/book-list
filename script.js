@@ -44,7 +44,7 @@ if (closeBtn) {
 }
 
 // Add books to the library
-addBookToLibrary(myLibrary);
+displayBooks(myLibrary);
 
 
 
