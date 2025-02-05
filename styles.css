@@ -6,16 +6,10 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    display: flex;
-    height: 100vh;
-    margin: 30px;
-    justify-content: center;
-}
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}                                                                                                            
 
 .header {
     display: flex;
@@ -23,3 +17,6 @@ body {
     font-size: 25px;
 }
 
+.book-item {
+    background-color: aqua;
+}
