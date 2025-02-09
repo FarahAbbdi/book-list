@@ -2,9 +2,9 @@ const bookContainer= document.querySelector('.book-list');
 const showDialogBtn = document.getElementById('open-dialog-btn');
 const dialog = document.getElementById('add-book-dialog');
 const addBookBtn = document.getElementById('add-book-btn');
-const closeBtn = document.getElementById('close-dialog-btn');
+const closeDialogBtn = document.getElementById('close-dialog-btn');
 
-const myLibrary = [
+let myLibrary = [
     new Book("Dune", "Frank Herbet", 412, true),
 ];
 
@@ -23,8 +23,8 @@ function displayBooks(books) {
     books.forEach(book => {
         let bookItem = document.createElement("div");
         bookItem.classList.add("book-item");
-
         bookItem.setAttribute("data-item", book.title);
+
         bookItem.innerHTML = `
             <h3>${book.title}</h3>
             <p>By ${book.author}</p>
@@ -32,6 +32,15 @@ function displayBooks(books) {
             <p>${book.isRead ? "Status: Read" : "Status: Not Read"}</p>
         `;
 
+        // Create remove book btn
+        let removeBookBtn = document.createElement("button");
+        removeBookBtn.innerHTML = "X";
+        removeBookBtn.classList.add("remove-book-btn");
+
+        // Attach event listener to remove book button
+        removeBookBtn.addEventListener("click", () => removeBookItem(bookItem));
+        
+        bookItem.appendChild(removeBookBtn);
         bookContainer.appendChild(bookItem);
     });
 }
@@ -44,8 +53,8 @@ if (showDialogBtn) {
 }
 
 // Close Dialog
-if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
+if (closeDialogBtn) {
+    closeDialogBtn.addEventListener("click", () => {
         dialog.close();
     });
 }
@@ -89,5 +98,19 @@ if (addBookBtn) {
     });    
 }
 
+// Function to remove remove book from library
+function removeBookItem(bookItem) {
+    const title = bookItem.querySelector("h3").innerText;
+    myLibrary = myLibrary.filter(book => book.title !== title); //
+    displayBooks(myLibrary);
+}
+
 // Initial display of the books
 displayBooks(myLibrary);
+
+
+
+
+
+
+
