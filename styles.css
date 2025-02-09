@@ -39,10 +39,21 @@ body {
 }
 
 .book-item {
+    display: flex; 
+    flex-direction: column; 
     position: relative;
-    background-color: var(--secondary-color);
     padding: 10px;
-    aspect-ratio: 1 / 1;  
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    aspect-ratio: 1 / 1; 
+    justify-content: center;   
+    align-items: center;      
+    text-align: center;
+}
+
+.book-item:hover {
+    transform: scale(1.02);
 }
 
 .remove-book-btn {
