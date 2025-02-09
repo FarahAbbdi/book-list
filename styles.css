@@ -28,13 +28,16 @@ body {
 
 .book-list {
     display: grid;
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    gap: 50px;
 }
 
 .book-item {
     position: relative;
     background-color: var(--secondary-color);
     padding: 10px;
+    aspect-ratio: 1 / 1;  
 }
 
 .remove-book-btn {
