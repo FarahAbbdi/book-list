@@ -21,16 +21,25 @@ function displayBooks(books) {
     bookContainer.innerHTML = '';
 
     books.forEach(book => {
-        let bookItem = document.createElement("div");
-        bookItem.classList.add("book-item");
-        bookItem.setAttribute("data-item", book.title);
+        let bookItem = document.createElement('div');
+        bookItem.classList.add('book-item');
+        bookItem.setAttribute('data-item', book.title);
 
         bookItem.innerHTML = `
-            <h3>${book.title}</h3>
-            <p>By ${book.author}</p>
-            <p>${book.numberOfPage} pages</p>
-            <p>${book.isRead ? "Status: Read" : "Status: Not Read"}</p>
+            <h2><strong>${book.title}</strong></h2>
+            <br>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.numberOfPage}</p>
+            <br>
+            <button class="status-btn">${book.isRead ? "Status: Read" : "Status: Not Read"}</button>
         `;
+
+        // Add event listerer to toggle read status
+        const statusBtn = bookItem.querySelector('.status-btn');
+        statusBtn.addEventListener("click", () => {
+            book.isRead = !book.isRead;
+            statusBtn.textContent = book.isRead ? "Status: Read" : "Status: Not Read";
+        })
 
         // Create remove book btn
         let removeBookBtn = document.createElement("button");
@@ -100,7 +109,7 @@ if (addBookBtn) {
 
 // Function to remove remove book from library
 function removeBookItem(bookItem) {
-    const title = bookItem.querySelector("h3").innerText;
+    const title = bookItem.querySelector('h2').innerText;
     myLibrary = myLibrary.filter(book => book.title !== title); //
     displayBooks(myLibrary);
 }
