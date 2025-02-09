@@ -10,19 +10,36 @@
     box-sizing: border-box;
 }                                                                                                            
 
-.header {
+body {
     background-color: var(--primary-color);
+}
+
+.header {
     display: flex;
     gap: 20px;
     font-size: 25px;
 }
 
 .library {
-    position: relative;
+    display: grid;
+    gap: 10px;
+}
+
+.book-list {
+    display: grid;
+    gap: 10px;
 }
 
 .book-item {
-    background-color: aqua;
+    position: relative;
+    background-color: white;
+    padding: 10px;
+}
+
+.remove-book-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 dialog {
