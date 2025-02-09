@@ -60,6 +60,17 @@ body {
     position: absolute;
     top: 5px;
     right: 5px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: var(--secondary-color);
+    visibility: hidden;
+}
+
+.book-item:hover .remove-book-btn {
+    opacity: 1;                   
+    visibility: visible;          
 }
 
 dialog {
