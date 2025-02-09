@@ -15,4 +15,4 @@ Project created with:
 - **JavaScript**: For functionality such as adding, removing, and toggling the read status of books.
 
 ## Live Demo
-[View the live demo here](thecoder45674.github.io/book-list/).
+[View the live demo here](https://thecoder45674.github.io/book-list/).
