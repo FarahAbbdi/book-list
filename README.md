@@ -14,5 +14,4 @@ Project created with:
 - **CSS3**: For styling and layout design.
 - **JavaScript**: For functionality such as adding, removing, and toggling the read status of books.
 
-## Live Demo
-[View the live demo here](https://thecoder45674.github.io/book-list/).
+
